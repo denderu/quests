@@ -1,0 +1,3 @@
+A1 - VCC
+A2 - GND
+A0 - SENS

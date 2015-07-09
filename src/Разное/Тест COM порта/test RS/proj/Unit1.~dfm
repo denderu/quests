@@ -1,0 +1,97 @@
+object Form1: TForm1
+  Left = 357
+  Top = 160
+  Width = 352
+  Height = 480
+  Caption = 'Form1'
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 104
+    Width = 40
+    Height = 13
+    Caption = 'Receive'
+  end
+  object Button1: TButton
+    Left = 8
+    Top = 64
+    Width = 75
+    Height = 25
+    Caption = 'send'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 240
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'close'
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 160
+    Top = 16
+    Width = 75
+    Height = 25
+    Caption = 'open'
+    TabOrder = 2
+    OnClick = Button3Click
+  end
+  object Memo1: TMemo
+    Left = 8
+    Top = 120
+    Width = 313
+    Height = 169
+    Lines.Strings = (
+      'Memo1')
+    TabOrder = 3
+  end
+  object Memo2: TMemo
+    Left = 8
+    Top = 328
+    Width = 313
+    Height = 41
+    Lines.Strings = (
+      'Memo2')
+    TabOrder = 4
+  end
+  object ComboBox1: TComboBox
+    Left = 8
+    Top = 16
+    Width = 145
+    Height = 21
+    ItemHeight = 13
+    TabOrder = 5
+    Text = 'ComboBox1'
+  end
+  object BComPort1: TBComPort
+    BaudRate = br9600
+    ByteSize = bs8
+    InBufSize = 2048
+    OutBufSize = 2048
+    Parity = paNone
+    Port = 'COM28'
+    SyncMethod = smThreadSync
+    StopBits = sb1
+    Timeouts.ReadInterval = -1
+    Timeouts.ReadTotalMultiplier = 0
+    Timeouts.ReadTotalConstant = 0
+    Timeouts.WriteTotalMultiplier = 100
+    Timeouts.WriteTotalConstant = 1000
+    OnRxChar = BComPort1RxChar
+    Left = 8
+    Top = 408
+  end
+end

@@ -1,0 +1,206 @@
+﻿document Document
+  Enabled = False
+  Height = 240000
+  ID = 1
+  Version = 150
+  Width = 320000
+  object Layer1: THMILayer
+    Enabled = False
+    ID = 3
+    Visible = True
+  end
+  object Frame1: THMIFrame
+    ProgramStyle = Standard
+    object Label: THMILabelWidget
+      Alignment = Center
+      property Brush
+        Color = 16777215
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16777215
+      property Font
+        Color = -16777208
+        Name = 'Charis SIL'
+        Size = 14000
+        HMIFontCodeString = Icpdas_cs_cyrillic,Regular,14,
+        IsIcpdas_eb_ = True
+      end
+      Height = 62000
+      ID = 4
+      Layer = Layer1
+      Left = 21000
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      RefObject = 
+      Text = 'Ожидание ДНК...'
+      Top = 34000
+      Visible = True
+      Width = 271000
+    end
+    object Label: THMILabelWidget
+      Alignment = Center
+      property Brush
+        Color = 16777215
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16777215
+      property Font
+        Color = -16777208
+        Name = 'CMU Serif'
+        Size = 12000
+        HMIFontCodeString = Cm,Regular,12
+        IsIcpdas_eb_ = True
+      end
+      Height = 20000
+      ID = 5
+      Layer = Layer1
+      Left = 67000
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      RefObject = 
+      Text = 
+      Top = 8000
+      Visible = True
+      Width = 180000
+    end
+    object TextPushButton: THMITextPushButton
+      AutoRepeatPeriod = 1000
+      AutoRepeatThreshold = 2000
+      property Brush
+        Color = 16777088
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16777088
+      property Font
+        Color = -16777208
+        Name = 'Charis SIL'
+        Size = 14000
+        HMIFontCodeString = Icpdas_cs_cyrillic,Regular,14,
+        IsIcpdas_eb_ = True
+      end
+      Height = 100000
+      ID = 6
+      Layer = Layer1
+      Left = 19000
+      OnClick = (
+        'TextPushButton6OnClick' )
+      OnRelease = ( )
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      PressFillColor = 16777215
+      RefObject = 
+      Shape = Rectangular
+      Text = (
+        'ЗАПУСК' )
+      Top = 111000
+      Visible = True
+      Width = 274000
+    end
+    object Timer: THMITimer
+      property Brush
+        Color = 16777215
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = False
+      FillColor = 16777215
+      Height = 32000
+      ID = 7
+      Interval = 1000
+      Layer = Layer1
+      Left = -13000
+      OnExecute = (
+        'Timer7OnExecute' )
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      Top = 274000
+      Visible = True
+      Width = 32000
+    end
+    object Timer: THMITimer
+      property Brush
+        Color = 16777215
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = False
+      FillColor = 16777215
+      Height = 32000
+      ID = 8
+      Interval = 1000
+      Layer = Layer1
+      Left = 84000
+      OnExecute = (
+        'Timer8OnExecute' )
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      Top = 292000
+      Visible = True
+      Width = 32000
+    end
+    object Label: THMILabelWidget
+      Alignment = Center
+      property Brush
+        Color = 16777215
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16777215
+      property Font
+        Color = -16777208
+        Name = 'CMU Serif'
+        Size = 12000
+        HMIFontCodeString = Cm,Regular,12
+        IsIcpdas_eb_ = True
+      end
+      Height = 20000
+      ID = 9
+      Layer = Layer1
+      Left = 37000
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      RefObject = 
+      Text = Label9
+      Top = 215000
+      Visible = True
+      Width = 84000
+    end
+    BackgroundColor = 16777215
+    property Brush
+      PropStyle = [psEditForm]
+    end
+    BrushStyle = Solid
+    Default = True
+    Enabled = False
+    ID = 2
+    OnCreate = (
+      'Frame12OnCreate' )
+    OnDestroy = (
+      'Frame12OnDestroy' )
+    OnHide = ( )
+    OnPaint = ( )
+    OnShow = ( )
+    ProgramStyle = Standard
+    RefObject = 
+    Visible = True
+  end
+end

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0"?>
+<xml>
+<Project Version ="1.3">
+  <Driver Name="TPD-280" Orientation="Landscape" />
+
+  <Files>
+    <File Name="dnk.hwd" />
+  </Files>
+
+  <Program>
+    <Logic Type="" Name="dnk.ldx" />
+  </Program>
+
+  <Connections>
+  </Connections>
+
+  <Devices>
+  </Devices>
+
+  <Virtual>
+  </Virtual>
+
+  <Configuration>
+    <WatchDog Enable="False" Timeout="4000" ClearTime="1000" />
+    <Startup LED="False" Beep="True" Delay="100" />
+    <LCD AutoOff="600" OnBeep="True" OfBeep="True" Brightness="180" />
+    <Beep Touch="True" TCPTimeout="False" />
+    <TPD430 BeepFreq="800" BeepDuration="25" />
+    <Backup Enable="True" IsCurrent="True" OutputDir="C:\ICPDAS\HMIWorks_Standard\Projects_Backup" InputDir="C:\ICPDAS\HMIWorks_Standard\Projects"/>
+    <Language Support="Russian" />
+    <Download Checksum="False" />
+    <Refresh Time="100" ConnectingBlinkCycle="500" ReconnectionInterval="5000" />
+  </Configuration>
+</Project>
+</xml>
+
+<!-- Information>
+  Tool Name="HMIWorks STD v2.09.08 (Jun.01, 2015)" 
+  Project Path="C:\ICPDAS\HMIWorks_Standard\Projects\dnk\" 
+  OS Version="64-bit Windows 7/2008 R2  (Version 6.1 Build 7601 Service Pack 1)" 
+  CPU Model="Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz" 
+-->
