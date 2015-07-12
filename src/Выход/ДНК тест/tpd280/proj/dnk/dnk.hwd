@@ -31,8 +31,9 @@
       ID = 4
       Layer = Layer1
       Left = 21000
-      OutlineColor = 0
+      OutlineColor = 16777215
       property Pen
+        Color = 16777215
         PropStyle = [psEditForm]
       end
       RefObject = 
@@ -61,8 +62,9 @@
       ID = 5
       Layer = Layer1
       Left = 67000
-      OutlineColor = 0
+      OutlineColor = 16777215
       property Pen
+        Color = 16777215
         PropStyle = [psEditForm]
       end
       RefObject = 
@@ -181,7 +183,7 @@
       RefObject = 
       Text = Label9
       Top = 215000
-      Visible = True
+      Visible = False
       Width = 84000
     end
     BackgroundColor = 16777215

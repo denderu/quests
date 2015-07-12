@@ -84,7 +84,7 @@ void Timer7OnExecute(tWidget *pWidget)
 					ret = uart_BinSend(hOpen,buf,2);             //проверка окончена, выдавай результат
 					TimerEnabledSet(&Timer8,1);					 //запускаем таймер для приема ответа
 
-
+               return;
 			}
 
 			//через каждую секунду обновляем label и пищим
