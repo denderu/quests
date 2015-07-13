@@ -67,11 +67,16 @@ String current_Tx = "";
 /*********************СОСТОЯНИЕ ДВЕРИ**************************/
 bool door_state;
 
-/*********************ДВИЖЕНИЕ ДВИГАТЕЛЯ**********************/
-bool move_motor = false;
+
 
 /*********************КОМАНДА ДВИГАТЕЛЮ***********************/
 int motor_cmd;
+
+/********************ДЕЙСТВИЯ ДВИГАТЕЛЯ***********************/
+int move_motor = STOP;
+
+/*******************ПОЛОЖЕНИЕ ДАТЧИКА*************************/
+int sens;
 
 /***********************НАБОР ФУНКЦИЙ******************/
 bool check_reed();
@@ -84,6 +89,8 @@ void check_bytes(byte b);
 int check_Rx_cmd();
 void run_cmd();
 void clear_bytes();
+
+void door_up();
 
 
 /*************************SETUP**************************/
@@ -133,7 +140,7 @@ void setup() {
   
   /*******РЕЛЕ***********/
   pinMode(RELAY_LED,OUTPUT);
-  digitalWrite(RELAY_LED,LOW);
+  //digitalWrite(RELAY_LED,HIGH);
   pinMode(RELAY_MAGNET,OUTPUT);
   digitalWrite(RELAY_MAGNET,HIGH);
 
@@ -141,8 +148,67 @@ void setup() {
   clear_bytes();
   
   /**********ДАЕМ КОМАНДУ НА ОТКРЫТИЕ ДВЕРИ В НАЧАЛЕ ИГРЫ*******************/
-  motor_cmd = COME_OPEN;
   
+  sens = get_sensor_position();
+  
+  if (sens != OPEN) {
+    
+          door_up();
+          led_control(1);
+          
+  }
+  
+  
+  
+  
+}
+
+
+void led_control(int c) {
+  
+  
+  if (c == 1) {
+    
+        digitalWrite(RELAY_LED,LOW);
+        
+  }
+  
+  else if (c == 0) {
+    
+        digitalWrite(RELAY_LED,HIGH);
+    
+  }
+  
+}
+
+
+/*******************ДВИГАТЕЛЬ ВВЕРХ************************/
+void door_up() {
+  
+  
+     move_motor = UP; 
+     digitalWrite(MOTOR_UP,HIGH); 
+     digitalWrite(MOTOR_DOWN,LOW);
+     delay(100);
+  
+}
+
+void door_down() {
+  
+     move_motor = UP;
+     digitalWrite(MOTOR_UP,LOW);
+     digitalWrite(MOTOR_DOWN,HIGH);
+     delay(100); 
+  
+}
+
+/**********************ДВИГАТЕЛЬ СТОП*********************/
+void door_stop() {
+  
+     move_motor = STOP;
+     digitalWrite(MOTOR_UP,LOW);
+     digitalWrite(MOTOR_DOWN,LOW);
+     delay(100); 
   
 }
 
@@ -358,77 +424,38 @@ int get_sensor_position() {
 }
 
 
-void run_motor(int _move) {
-  
-       switch(_move) {
-        
-              case COME_STOP: 
-                          delay(200);
-                          digitalWrite(MOTOR_UP,LOW);
-                          digitalWrite(MOTOR_DOWN,LOW);
-                          move_motor = false;
-                          break;
-                          
-              case COME_OPEN:
-                          delay(200);
-                          digitalWrite(MOTOR_UP,HIGH);
-                          digitalWrite(MOTOR_DOWN,LOW);
-                          move_motor = true;
-                          break;
-              
-              case COME_CLOSE:
-                          delay(200);
-                           digitalWrite(MOTOR_UP,LOW);
-                           digitalWrite(MOTOR_DOWN,HIGH);
-                           move_motor = true;
-                           break;            
-  
-       }
-}
+
 
 
 /******************************ГЛАВНЫЙ ЦИКЛ******************************/
 void loop() {
   // put your main code here, to run repeatedly:
 
-  /*int sens = get_sensor_position();
-
-  switch(motor_cmd) {
+  if (move_motor != STOP) {
     
-          case NOTHING:       break;                                              //если нет никакой команды, то ничего не делаем
-          
-          case COME_STOP:                                                      //если была дана команда СТОП
-                           if (!move_motor) {}                                //если при этом мотор не двигается, то ничего не делаем
-                           else {run_motor(motor_cmd); }                            //если мотор двигался, то даем команду на его остановку
-                           break;                  
-                           
-          case COME_OPEN:                                                        //если была дана команда ПОДНЯТСЯ
-                           if (!move_motor)                                    //если при этом мотор стоит
-                               {  
-                                   if (sens != OPEN) {run_motor(motor_cmd); }                //если положение датчика не ОТКРЫТ, то отдаем команду на поднятие двери          
-                                   else {motor_cmd = NOTHING; }                          //если датчик указывает, что дверь уже открыта, то обнуляем команду и ничего не делаем
-                               }
-                           else {                                                      //если мотор двигается
-                         
-                                 if (sens != OPEN) {run_motor(COME_STOP); run_motor(motor_cmd); }    //если датчик НЕ ОТКРЫТ, то отдаем команду НА ОСТАНОВ, а затем на ПОДНЯТИЕ
-                                 else {run_motor(COME_STOP); motor_cmd = NOTHING; }              //если датчик уже наверху, то останавливаем двигатель и обунляем команду на двигатель
-                         
-                         
-                           }  
-                         
-           case COME_CLOSE:
-                            if (!move_motor)
-                                {
-                                   if (sens != CLOSE) {run_motor(motor_cmd); }                //если положение датчика не ЗАКРЫТ, то отдаем команду на опускание двери          
-                                   else {motor_cmd = NOTHING; }
-                       
-                                }   
-                            else {
-                                    if (sens != CLOSE) {run_motor(COME_STOP); run_motor(motor_cmd); }    //если датчик НЕ ЗАКРЫТ, то отдаем команду НА ОСТАНОВ, а затем на ОПУСКАНИЕ
-                                 else {run_motor(COME_STOP); motor_cmd = NOTHING; }              //если датчик уже наверху, то останавливаем двигатель и обунляем команду на двигатель
-                         
-                               }
-  }      */  
+       switch(move_motor) {
+        
+            case UP:    sens = get_sensor_position();
+                        if (sens == OPEN) {
+                          
+                               door_stop();
+                               move_motor = STOP; 
+                          
+                        }
+                        break;
+                        
+             case DOWN:    sens = get_sensor_position();
+                           if (sens == CLOSE) {
+                  
+                                door_stop();
+                                move_motor = STOP;
+                  
+                           }           
+                           break;
+        
+       } 
+    
+  }
   
   if (allow_DNA) {
     
@@ -471,24 +498,24 @@ void loop() {
     
           delay(10);
           byte s = Serial.read();
-          Serial.println(s);
+          
           check_bytes(s);
           
           switch(check_Rx_cmd()) {
            
                case IS_START1: allow_DNA = true; 
-                               //motor_cmd = COME_CLOSE;
+                               door_down(); led_control(0);
                                break;
                case IS_STOP1: allow_DNA = false; 
                               run_cmd(); 
-                              //motor_cmd = COME_OPEN; 
+                              door_up(); led_control(1);
                               break;
                case IS_START2: allow_CHIP = true; 
-                              //motor_cmd = COME_CLOSE; 
+                              door_down(); led_control(0); 
                               break;
                case IS_STOP2: allow_CHIP = false; 
                               run_cmd(); 
-                              //motor_cmd = COME_OPEN; 
+                              door_up(); led_control(1); 
                               break;
                case NONE: break;
             
