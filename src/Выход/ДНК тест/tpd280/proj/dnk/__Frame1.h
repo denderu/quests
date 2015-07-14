@@ -14,6 +14,26 @@ char time_str[10];				//строк для Label, для вставки оста�
 
 int iRxData=0;					//количество принятых байт
 
+void TextPushButton10OnClick(tWidget *pWidget)
+{
+            BOOL ret1;
+
+				char buf[2] = "FT";                       //посылка в уарт, запуск с топливом FF
+
+				ret1 = uart_Send(hOpen,buf);               //отправляем
+}
+
+
+void TextPushButton11OnClick(tWidget *pWidget)
+{
+              BOOL ret2;
+
+				char buf[2] = "FR";                       //посылка в уарт, запуск с топливом FF
+
+				ret2 = uart_Send(hOpen,buf);               //отправляем
+}
+
+
 /*******************НАЖАТИЕ КНОПКИ ЗАПУСК**********************/
 void TextPushButton6OnClick(tWidget *pWidget)
 {
@@ -153,6 +173,7 @@ void Timer8OnExecute(tWidget *pWidget)
 								if (recv_str[j] == '3') {c2 = true; type = 3; break;}
 								if (recv_str[j] == '4') {c2 = true; type = 4; break;}
 								if (recv_str[j] == '5') {c2 = true; type = 5; break;}
+                        if (recv_str[j] == '6') {c2 = true; type = 6; break;}
 
 							}
 
@@ -181,6 +202,9 @@ void Timer8OnExecute(tWidget *pWidget)
                                  break;
                         case 5:  st1 = "Вы герои";
                                  pos = 2;
+                                 break;
+
+                        case 6: st1 = "Повторите попытку";
                                  break;
 
 
@@ -212,4 +236,7 @@ void Frame12OnDestroy()
          hOpen = -1;
     }
 }
+
+
+
 

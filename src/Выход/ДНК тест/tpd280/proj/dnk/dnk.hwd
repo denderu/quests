@@ -11,6 +11,31 @@
   end
   object Frame1: THMIFrame
     ProgramStyle = Standard
+    object ObjectList: THMIObjectList
+      property Brush
+        Color = 16777215
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16777215
+      FitToWidget = True
+      ForceCompile = False
+      Height = 32000
+      HiColor = False
+      ID = 12
+      Layer = Layer1
+      Left = 7000
+      Objects = (
+        '[Pictures]\dnk_TextPushButton10_0.hwd' )
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      Top = -50000
+      Visible = True
+      Width = 32000
+    end
     object Label: THMILabelWidget
       Alignment = Center
       property Brush
@@ -27,7 +52,7 @@
         HMIFontCodeString = Icpdas_cs_cyrillic,Regular,14,
         IsIcpdas_eb_ = True
       end
-      Height = 62000
+      Height = 25000
       ID = 4
       Layer = Layer1
       Left = 21000
@@ -93,7 +118,7 @@
       Height = 100000
       ID = 6
       Layer = Layer1
-      Left = 19000
+      Left = 136000
       OnClick = (
         'TextPushButton6OnClick' )
       OnRelease = ( )
@@ -106,9 +131,9 @@
       Shape = Rectangular
       Text = (
         'ЗАПУСК' )
-      Top = 111000
+      Top = 97000
       Visible = True
-      Width = 274000
+      Width = 176000
     end
     object Timer: THMITimer
       property Brush
@@ -175,16 +200,88 @@
       Height = 20000
       ID = 9
       Layer = Layer1
-      Left = 37000
+      Left = 175000
       OutlineColor = 0
       property Pen
         PropStyle = [psEditForm]
       end
       RefObject = 
       Text = Label9
-      Top = 215000
+      Top = 262000
       Visible = False
       Width = 84000
+    end
+    object TextPushButton: THMITextPushButton
+      AutoRepeatPeriod = 1000
+      AutoRepeatThreshold = 2000
+      property Brush
+        Color = 16744448
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16744448
+      property Font
+        Name = 'Charis SIL'
+        Size = 12000
+        HMIFontCodeString = Icpdas_cs_cyrillic,Regular,12,
+        IsIcpdas_eb_ = True
+      end
+      Height = 42000
+      ID = 10
+      Layer = Layer1
+      Left = 7000
+      OnClick = (
+        'TextPushButton10OnClick' )
+      OnRelease = ( )
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      PressFillColor = 16777088
+      RefObject = 
+      Shape = Rectangular
+      Text = (
+        'Открыть' )
+      Top = 100000
+      Visible = True
+      Width = 115000
+    end
+    object TextPushButton: THMITextPushButton
+      AutoRepeatPeriod = 1000
+      AutoRepeatThreshold = 2000
+      property Brush
+        Color = 16744448
+        PropStyle = [psEditForm]
+      end
+      BrushStyle = Solid
+      Enabled = True
+      FillColor = 16744448
+      property Font
+        Name = 'Charis SIL'
+        Size = 12000
+        HMIFontCodeString = Icpdas_cs_cyrillic,Regular,12,
+        IsIcpdas_eb_ = True
+      end
+      Height = 41000
+      ID = 11
+      Layer = Layer1
+      Left = 7000
+      OnClick = (
+        'TextPushButton11OnClick' )
+      OnRelease = ( )
+      OutlineColor = 0
+      property Pen
+        PropStyle = [psEditForm]
+      end
+      PressFillColor = 16777088
+      RefObject = 
+      Shape = Rectangular
+      Text = (
+        'Закрыть' )
+      Top = 152000
+      Visible = True
+      Width = 115000
     end
     BackgroundColor = 16777215
     property Brush

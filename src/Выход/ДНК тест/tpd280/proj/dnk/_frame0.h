@@ -18,6 +18,16 @@ extern void _OnTextPushButton6Release(tWidget *pWidget);
 extern tTimerWidget Timer7;
 extern tTimerWidget Timer8;
 extern tCanvasWidget Label9;
+extern tPushButtonWidget TextPushButton10;
+extern void _OnTextPushButton10Paint(tWidget *, unsigned long);
+extern void _OnTextPushButton10Click(tWidget *pWidget);
+extern void _OnTextPushButton10Release(tWidget *pWidget);
+
+extern tPushButtonWidget TextPushButton11;
+extern void _OnTextPushButton11Paint(tWidget *, unsigned long);
+extern void _OnTextPushButton11Click(tWidget *pWidget);
+extern void _OnTextPushButton11Release(tWidget *pWidget);
+
 extern void OnFrame12Paint(tWidget *pWidget, tContext *pContext);
 
 extern tCanvasWidget CanvasFrame1;

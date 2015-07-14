@@ -14,7 +14,7 @@ static void DisconnectWidgetVariable();
 #include "__frame1.h"
 
 Canvas(Label4, WIDGET_ROOT, 0, 0,
-    HMI_DISPLAY_DRIVER_PTR, 21, 34, 271, 62,
+    HMI_DISPLAY_DRIVER_PTR, 21, 34, 271, 25,
     CANVAS_STYLE_TEXT | CANVAS_STYLE_FILL | CANVAS_STYLE_OUTLINE
     | CANVAS_STYLE_TEXT_HCENTER | CV_AOPT_VISIBLE | CV_AOPT_ENABLED | CANVAS_STYLE_TEXT_OPAQUE
     , 0xFFFFFF, 0xFFFFFF, 0x000000,
@@ -26,7 +26,7 @@ Canvas(Label5, WIDGET_ROOT, 0, 0,
     , 0xFFFFFF, 0xFFFFFF, 0x000000,
     g_pFontCm18, "", 0, 0);
 RectangularButton(TextPushButton6, WIDGET_ROOT, 0,
-    0, HMI_DISPLAY_DRIVER_PTR, 19, 111, 274, 100,
+    0, HMI_DISPLAY_DRIVER_PTR, 136, 97, 176, 100,
     (PB_STYLE_OUTLINE | PB_STYLE_TEXT_OPAQUE | PB_STYLE_TEXT | PB_AOPT_VISIBLE | PB_AOPT_ENABLED | PB_STYLE_AUTO_REPEAT | 
     PB_STYLE_FILL), 0x80FFFF, 0xFFFFFF, 0x000000, 0x000000,
     g_pFontIcpdas_cs_cyrillic20, "ЗАПУСК", 0,
@@ -38,11 +38,27 @@ TimerWidget(Timer7, WIDGET_ROOT, 0, 0, HMI_DISPLAY_DRIVER_PTR, 0, 0, 32, 32,
 TimerWidget(Timer8, WIDGET_ROOT, 0, 0, HMI_DISPLAY_DRIVER_PTR, 0, 0, 32, 32,
     0, 1000, 0, Timer8OnExecute);
 Canvas(Label9, WIDGET_ROOT, 0, 0,
-    HMI_DISPLAY_DRIVER_PTR, 37, 215, 84, 20,
+    HMI_DISPLAY_DRIVER_PTR, 175, 262, 84, 20,
     CANVAS_STYLE_TEXT | CANVAS_STYLE_FILL | CANVAS_STYLE_OUTLINE
     | CANVAS_STYLE_TEXT_HCENTER | CV_AOPT_ENABLED | CANVAS_STYLE_TEXT_OPAQUE
     , 0xFFFFFF, 0x000000, 0x000000,
     g_pFontCm18, "Label9", 0, 0);
+RectangularButton(TextPushButton10, WIDGET_ROOT, 0,
+    0, HMI_DISPLAY_DRIVER_PTR, 7, 100, 115, 42,
+    (PB_STYLE_OUTLINE | PB_STYLE_TEXT_OPAQUE | PB_STYLE_TEXT | PB_AOPT_VISIBLE | PB_AOPT_ENABLED | PB_STYLE_AUTO_REPEAT | 
+    PB_STYLE_FILL), 0x0080FF, 0x80FFFF, 0x000000, 0x000000,
+    g_pFontIcpdas_cs_cyrillic18, "Открыть", 0,
+    200, 100,
+    _OnTextPushButton10Click, _OnTextPushButton10Release, 0,
+    0, -1, 0);
+RectangularButton(TextPushButton11, WIDGET_ROOT, 0,
+    0, HMI_DISPLAY_DRIVER_PTR, 7, 152, 115, 41,
+    (PB_STYLE_OUTLINE | PB_STYLE_TEXT_OPAQUE | PB_STYLE_TEXT | PB_AOPT_VISIBLE | PB_AOPT_ENABLED | PB_STYLE_AUTO_REPEAT | 
+    PB_STYLE_FILL), 0x0080FF, 0x80FFFF, 0x000000, 0x000000,
+    g_pFontIcpdas_cs_cyrillic18, "Закрыть", 0,
+    200, 100,
+    _OnTextPushButton11Click, _OnTextPushButton11Release, 0,
+    0, -1, 0);
 
 
 Canvas(CanvasFrame1, WIDGET_ROOT, 0, 0, HMI_DISPLAY_DRIVER_PTR, 0, 0,
@@ -72,6 +88,8 @@ void InitWidget1()
     WidgetAdd(WIDGET_ROOT, (tWidget *)&Timer7);
     WidgetAdd(WIDGET_ROOT, (tWidget *)&Timer8);
     WidgetAdd(WIDGET_ROOT, (tWidget *)&Label9);
+    WidgetAdd(WIDGET_ROOT, (tWidget *)&TextPushButton10);
+    WidgetAdd(WIDGET_ROOT, (tWidget *)&TextPushButton11);
     InitGlobalContext();
     ConnectWidgetVariable();
 }
@@ -86,6 +104,8 @@ void FreeWidget1()
     WidgetRemove((tWidget *)(&Timer7));
     WidgetRemove((tWidget *)(&Timer8));
     WidgetRemove((tWidget *)(&Label9));
+    WidgetRemove((tWidget *)(&TextPushButton10));
+    WidgetRemove((tWidget *)(&TextPushButton11));
  Frame12OnDestroy();
 }
 
@@ -109,6 +129,26 @@ void OnTimer7Execute(tWidget *pWidget)
 void OnTimer8Execute(tWidget *pWidget)
 {
   Timer8OnExecute(pWidget);
+}
+
+
+void _OnTextPushButton10Release(tWidget *pWidget)
+{
+}
+
+void _OnTextPushButton10Click(tWidget *pWidget)
+{
+  TextPushButton10OnClick(pWidget);
+}
+
+
+void _OnTextPushButton11Release(tWidget *pWidget)
+{
+}
+
+void _OnTextPushButton11Click(tWidget *pWidget)
+{
+  TextPushButton11OnClick(pWidget);
 }
 
 
